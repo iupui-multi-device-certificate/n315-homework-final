@@ -40,4 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let fbApp = firebase.app();
 
   console.log("domcontentloaded");
+
+  window.onhashchange = locationHashChanged;
+  locationHashChanged();
 });
