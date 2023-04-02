@@ -2,6 +2,8 @@ const loggedInLink = document.getElementById("loginNav");
 const loggedOutLink = document.getElementById("logoutNav");
 
 const setupUI = (user) => {
+  window.onhashchange = locationHashChanged;
+  locationHashChanged();
   if (user) {
     //display user info
     const html = `
@@ -40,7 +42,4 @@ document.addEventListener("DOMContentLoaded", function () {
   let fbApp = firebase.app();
 
   console.log("domcontentloaded");
-
-  window.onhashchange = locationHashChanged;
-  locationHashChanged();
 });
