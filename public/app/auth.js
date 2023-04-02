@@ -12,49 +12,55 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-// signup
-const signupForm = document.querySelector("#signup-form");
-signupForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+//add to document since these are dynamically created
+document.addEventListener("submit", (e) => {
+  // signup
+  const signupForm = e.target.closest("#signup-form");
+  if (signupForm) {
+    e.preventDefault();
 
-  // get user info
-  const email = signupForm["signup-email"].value;
-  const password = signupForm["signup-password"].value;
+    // get user info
+    const email = signupForm["signup-email"].value;
+    const password = signupForm["signup-password"].value;
 
-  // sign up the user & add firestore data
-  //TODO: add catch
-  auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((cred) => {
-      return db.collection("users").doc(cred.user.uid).set({
-        firstName: signupForm["first-name"].value,
-        lastName: signupForm["last-name"].value,
-        email: signupForm["signup-email"].value,
-        recipes: [],
+    // sign up the user & add firestore data
+    //TODO: add catch
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((cred) => {
+        return db.collection("users").doc(cred.user.uid).set({
+          firstName: signupForm["first-name"].value,
+          lastName: signupForm["last-name"].value,
+          email: signupForm["signup-email"].value,
+          recipes: [],
+        });
+      })
+      .then(() => {
+        console.log("account created");
       });
-    })
-    .then(() => {
-      console.log("account created");
+  }
+
+  //login form
+  const loginForm = e.target.closest("#login-form");
+  if (loginForm) {
+    e.preventDefault();
+
+    //get user info
+    const email = loginForm["login-email"].value;
+    const password = loginForm["login-password"].value;
+
+    //log the user in
+    auth.signInWithEmailAndPassword(email, password).then((cred) => {
+      loginForm.reset();
     });
+  }
 });
 
-// logout
+//this is always in dom so don't need to add to document
 const logout = document.querySelector("#logout");
+
 logout.addEventListener("click", (e) => {
   e.preventDefault();
   auth.signOut();
 });
-
-const loginForm = document.querySelector("#login-form");
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // get user info
-  const email = loginForm["login-email"].value;
-  const password = loginForm["login-password"].value;
-
-  // log the user in
-  auth.signInWithEmailAndPassword(email, password).then((cred) => {
-    loginForm.reset();
-  });
-});
+// });
