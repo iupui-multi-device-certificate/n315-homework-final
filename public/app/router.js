@@ -17,6 +17,14 @@ function locationHashChanged() {
     pageID = "home";
   }
 
+  //toggle recipe-hero on html since this was only way I could get it full page at this time
+  document
+    .querySelector("html")
+    .classList.toggle(
+      "recipe-hero",
+      pageID === "browse" || pageID === "yourRecipes"
+    );
+
   document.getElementById("app").innerHTML = routes[pageID];
 
   toggleCurrentPage(hashTag);
