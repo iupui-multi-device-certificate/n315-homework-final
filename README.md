@@ -20,6 +20,7 @@ https://rah-iupui-n315-final.web.app
 - In the latest version, I have attempted to make app similar to Net Ninja - Lessons 1-15 (https://www.youtube.com/watch?v=aN1LnNq4z54&list=PL4cUxeGkcC9jUPIes_B8vRjn1_GaplOPQ, https://github.com/iamshaunjp/firebase-auth), but he is using a true single page with less generated HTML, so his is easier to not have it separated out into views.
 - Struggling to access data in dynamic views with MVC.
 - I know this is related to promises and am trying to do things in the .then clauses. However, I have not been able to overcome passing data to the view with the routing and getting the promises to resolve.
+- Working on passing data to the yourRecipes so can display user data including firstName and the recipes array
 
 ## Data model
 
