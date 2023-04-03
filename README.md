@@ -5,6 +5,10 @@
 Firebase URL:
 https://rah-iupui-n315-final.web.app
 
+## DESCRIPTION
+
+The Jungle Cook is a Vanilla JavaScript Single-Page CRUD Application that allows users to create and edit recipes, as well as view their recipes or browse for recipes.
+
 ## NOTES
 
 - Appearance per this Adobe XD: https://xd.adobe.com/spec/000d9233-c620-4eb6-5884-adaea1a04abb-763c/
